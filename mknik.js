@@ -1,7 +1,6 @@
-class Mknik {
+class Mknik extends LivingCreature {
     constructor(x,y,index) {
-        this.x = x;
-        this.y = y;
+        super(x,y,index)
         this.energy = 20;
         this.index = index;
         this.directions = [];

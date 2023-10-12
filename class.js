@@ -1,7 +1,6 @@
-class Grass{
+class Grass extends LivingCreature{
     constructor(x, y, index) {
-       this.x = x;
-       this.y = y;
+        super(x,y,index)
        this.index = index;
        this.multiply = 0;
 
