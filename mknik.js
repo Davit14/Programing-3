@@ -1,4 +1,5 @@
-class Mknik extends LivingCreature {
+let random = require("./random");
+module.exports = class Mknik extends LivingCreature {
     constructor(x,y,index) {
         super(x,y,index)
         this.energy = 20;
