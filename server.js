@@ -1,3 +1,4 @@
+let random = require("./random");
 var express = require("express");
 var app = express();
 var server = require('http').Server(app);
@@ -17,16 +18,17 @@ server.listen(3000, function () {
 
 });
 
-let random = require('./random');
+
 let Grass = require('./class');
 let GrassEater = require('./GrassEater');
 let Kiler = require('./kiler');
 let Mknik = require('./mknik');
 let Predator = require("./predator");
+let bomb = require("./bomb");
 
  matrix = []
- var n = 70
- var m = 70
+ var n = 50
+ var m = 50
 
 
 
@@ -40,8 +42,8 @@ let Predator = require("./predator");
 function kerparner(qanak, kerpar) {
    var k = 0
    while (k <= qanak) {
-      var y = Math.floor(random(0, n))
-      var x = Math.floor(random(0, m))
+      var y = Math.floor(random( n))
+      var x = Math.floor(random( m))
       if (matrix[y][x] == 0) {
          matrix[y][x] = kerpar;
       }
@@ -53,13 +55,15 @@ function kerparner(qanak, kerpar) {
  grassEaterArr = []
  predatorArr = []
  kilerArr = []
+ bombArr = []
 
 function setupGame() {
-   kerparner(1000, 1)
+   kerparner(800, 1)
    kerparner(200, 2)
-   kerparner(285, 3)
-   kerparner(555, 4)
-   kerparner(210, 5)
+   kerparner(270, 3)
+   kerparner(270, 4)
+   kerparner(180, 5)
+   kerparner(35, 6)
 
    for (var y = 0; y < matrix.length; ++y) {
       for (var x = 0; x < matrix[y].length; ++x) {
@@ -86,9 +90,15 @@ function setupGame() {
             mknikArr.push(pav)
 
          }
-         else if (matrix[y][x] == 8) {
+         else if (matrix[y][x] == 6) {
+            var tav = new bomb(x, y, 6)
+            bombArr.push(tav)
 
          }
+         
+
+
+         
       }
    }
 }
@@ -118,6 +128,11 @@ function playGame () {
 
 
   }
+  for (var i in bombArr) {
+   bombArr[i].start();
+
+
+}
   io.emit('update matrix', matrix)
 }
 
@@ -134,5 +149,5 @@ function startPlaying(){
    clearInterval(intervalID)
    intervalID = setInterval(() => {
       playGame()
-   }, 1000);
+   }, 650);
 }

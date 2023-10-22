@@ -1,3 +1,4 @@
+let LivingCreature = require("./LivingCreature");
 let random = require("./random");
 module.exports = class Mknik extends LivingCreature {
     constructor(x,y,index) {

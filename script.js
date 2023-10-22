@@ -1,12 +1,15 @@
-var side = 10;
+var g = 45;
+var side = 13;
 const soket = io()
 
 
 function setup() {
-    createCanvas( 20 * side, 20  * side);
+    createCanvas( g * side, g  * side);
     background('#acacac');
 }
 function ran (matrix){
+    
+    
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
 
@@ -26,8 +29,15 @@ function ran (matrix){
                 fill('blue')
             }
             else if (matrix[y][x] == 5) {
+                fill('#723E0D')
+            }
+            else if (matrix[y][x] == 6) {
                 fill('black')
             }
+            else if (matrix[y][x] == 10) {
+                fill('black')
+            }
+           
             rect(x * side, y * side, side,side, side);
         }
     }
