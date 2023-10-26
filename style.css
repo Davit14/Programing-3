@@ -1,8 +1,16 @@
 body{
-   background-color: blue
+   background-color: rgb(7, 197, 188)
 }
 
 #defaultCanvas0 {
-   margin-left:300px
+   margin-left:630px;
 }
+#winter{
+   margin-left:560px;
+   background-color:rgb(59, 59, 255)
+}
+#summer{
+   margin-left:0px;
+   background-color:rgb(255, 8, 8)
 
+}

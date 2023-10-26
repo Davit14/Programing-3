@@ -26,13 +26,13 @@ let Mknik = require('./mknik');
 let Predator = require("./predator");
 let bomb = require("./bomb");
 
- matrix = []
- var n = 50
- var m = 50
+matrix = []
+var n = 70
+var m = 70
 
 
 
- for (let i = 0; i < n; i++) {
+for (let i = 0; i < n; i++) {
    matrix.push([])
    for (let j = 0; j < m; j++) {
       matrix[i].push(0)
@@ -42,20 +42,20 @@ let bomb = require("./bomb");
 function kerparner(qanak, kerpar) {
    var k = 0
    while (k <= qanak) {
-      var y = Math.floor(random( n))
-      var x = Math.floor(random( m))
+      var y = Math.floor(random(n))
+      var x = Math.floor(random(m))
       if (matrix[y][x] == 0) {
          matrix[y][x] = kerpar;
       }
       k++
    }
 }
- grassArr = [];
- mknikArr = [];
- grassEaterArr = []
- predatorArr = []
- kilerArr = []
- bombArr = []
+grassArr = [];
+mknikArr = [];
+grassEaterArr = []
+predatorArr = []
+kilerArr = []
+bombArr = []
 
 function setupGame() {
    kerparner(800, 1)
@@ -95,59 +95,60 @@ function setupGame() {
             bombArr.push(tav)
 
          }
-         
 
 
-         
+
+
       }
    }
 }
 
 
-function playGame () {
+function playGame() {
    for (var i in grassArr) {
       grassArr[i].mul();
-  }
-  for (var i in grassEaterArr) {
+   }
+   for (var i in grassEaterArr) {
       grassEaterArr[i].eat();
 
-  }
-  for (var i in predatorArr) {
+   }
+   for (var i in predatorArr) {
       predatorArr[i].eat();
 
 
 
-  }
-  for (var i in kilerArr) {
+   }
+   for (var i in kilerArr) {
       kilerArr[i].eat();
 
 
-  }
-  for (var i in mknikArr) {
+   }
+   for (var i in mknikArr) {
       mknikArr[i].eat();
 
 
-  }
-  for (var i in bombArr) {
-   bombArr[i].start();
+   }
+   for (var i in bombArr) {
+      bombArr[i].start();
 
 
+   }
+   io.emit('update matrix', matrix)
 }
-  io.emit('update matrix', matrix)
-}
 
-io.on('connection', function (socket){
-socket.emit('update matrix', matrix)
-setupGame()
-startPlaying()
+io.on('connection', function (socket) {
+   socket.emit('update matrix', matrix)
+   setupGame()
+   startPlaying()
 })
 
 
 let intervalID;
 
-function startPlaying(){
+function startPlaying() {
    clearInterval(intervalID)
    intervalID = setInterval(() => {
       playGame()
-   }, 650);
+   },  550 )  
 }
+

@@ -1,6 +1,8 @@
-var g = 45;
-var side = 13;
+var g = 60;
+var side = 14;
 const soket = io()
+var isWinter = false
+
 
 
 function setup() {
@@ -8,6 +10,7 @@ function setup() {
     background('#acacac');
 }
 function ran (matrix){
+
     
     
     for (var y = 0; y < matrix.length; y++) {
@@ -15,6 +18,10 @@ function ran (matrix){
 
             if (matrix[y][x] == 1) {
                 fill("green");
+                if( isWinter ) {
+                    fill('white')
+                }
+             
             }
             else if (matrix[y][x] == 0) {
                 fill("#acacac");
@@ -45,3 +52,17 @@ function ran (matrix){
 
 
 soket.on("update matrix", ran)
+
+function showWinter(){
+    isWinter = true
+}
+function onWinter(){
+    isWinter = false
+}
+
+let winter = document.getElementById('winter')
+winter.addEventListener('click', showWinter)    
+
+let summer = document.getElementById('summer')
+summer.addEventListener('click', onWinter) 
+
