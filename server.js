@@ -58,12 +58,12 @@ kilerArr = []
 bombArr = []
 
 function setupGame() {
-   kerparner(800, 1)
-   kerparner(200, 2)
-   kerparner(270, 3)
-   kerparner(270, 4)
-   kerparner(180, 5)
-   kerparner(35, 6)
+   kerparner(3500, 1)
+   kerparner(650, 2)
+   kerparner(770, 3)
+   kerparner(870, 4)
+   kerparner(680, 5)
+   kerparner(50, 6)
 
    for (var y = 0; y < matrix.length; ++y) {
       for (var x = 0; x < matrix[y].length; ++x) {
@@ -149,6 +149,6 @@ function startPlaying() {
    clearInterval(intervalID)
    intervalID = setInterval(() => {
       playGame()
-   },  550 )  
+   },  650 )  
 }
 
